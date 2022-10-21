@@ -5,7 +5,7 @@ import json
 DATA_FILE = Path.cwd().resolve() / "data" / "movies.json"
 
 
-def get_movie():
+def get_movies():
 
     with open(DATA_FILE, "r") as f : 
         movies_title = json.load(f)
@@ -23,7 +23,7 @@ class Movie:
         return self.title
     
     
-    def add_movies(self):
+    def add_to_movies(self):
         movies = self._get_movies()
         movie = self.title
         if movie in movies:
