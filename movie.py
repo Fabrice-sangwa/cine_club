@@ -43,7 +43,7 @@ class Movie:
             json.dump(movies,f, indent=4)
             
             
-    def remove_movies(self):
+    def remove_from_movies(self):
         movies = self._get_movies()
         movie = self.title
         if movie in movies: 

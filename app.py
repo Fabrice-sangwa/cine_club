@@ -40,7 +40,8 @@ class App(QtWidgets.QWidget):
     def populate_movies(self):
         for movie in get_movies():
             lw_item = QtWidgets.QListWidgetItem(movie.title)
-            lw_item.setData(QtCore.Qt.UserRole, movie)
+            lw_item.movie = movie
+            #lw_item.setData(QtCore.Qt.UserRole, movie)
             self.lw_movies.addItem(lw_item)
             
     def add_movie(self):
@@ -53,7 +54,8 @@ class App(QtWidgets.QWidget):
         
         if resultat:
             lw_item = QtWidgets.QListWidgetItem(movie.title)
-            lw_item.setData(QtCore.Qt.UserRole, movie)
+            lw_item.movie = movie
+            #lw_item.setData(QtCore.Qt.UserRole, movie)
             self.lw_movies.addItem(lw_item)
             
         
@@ -61,7 +63,11 @@ class App(QtWidgets.QWidget):
 
         
     def remove_movie(self):
-         pass
+        for selected_item in self.lw_movies.selectedItems():
+            movie = selected_item.movie
+            #movie = selected_item.data(QtCore.Qt.UserRole)
+            movie.remove_from_movies()
+            self.lw_movies.takeItem(self.lw_movies.row(selected_item))
              
         
         
